@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Message box for showing validation and success alerts -->
+    <div id="message-box" class="message-box hidden"></div>
+
+    <div class="container">
+        <h1 class="main-title">Comprehensive User Registration</h1>
+
+        <!-- Registration Form View -->
+        <div id="registration-form">
+            <form id="user-form">
+                
+                <!-- Section 1: Personal Details -->
+                <div class="form-section">
+                    <fieldset>
+                        <legend><span class="section-title">Personal Information</span></legend>
+                        
+                        <!-- Full Name (3 separate text inputs) -->
+                        <div class="grid-layout grid-layout-3-md" style="margin-bottom: 20px;">
+                            <div>
+                                <label for="firstName" class="form-label">First Name <span class="required-mark">*</span></label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" maxlength="64" required>
+                            </div>
+                            <div>
+                                <label for="middleName" class="form-label">Middle Name</label>
+                                <input type="text" id="middleName" name="middleName" class="form-input" maxlength="64">
+                            </div>
+                            <div>
+                                <label for="lastName" class="form-label">Last Name <span class="required-mark">*</span></label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" maxlength="64" required>
+                            </div>
+                        </div>
+
+                        <div class="grid-layout grid-layout-2-md">
+                            
+                            <!-- Date of Birth (date only) -->
+                            <div>
+                                <label for="dob" class="form-label">Date of Birth <span class="required-mark">*</span></label>
+                                <input type="date" id="dob" name="dob" class="form-input" required>
+                            </div>
+
+                            <!-- Birth Location (text, limit 64) -->
+                            <div>
+                                <label for="birthLocation" class="form-label">Birth Location <span class="required-mark">*</span></label>
+                                <input type="text" id="birthLocation" name="birthLocation" class="form-input" maxlength="64" required>
+                            </div>
+                        </div>
+
+                        <div class="grid-layout grid-layout-2-md" style="margin-top: 20px;">
+                            <!-- Nationality (text, limit 64) -->
+                            <div>
+                                <label for="nationality" class="form-label">Nationality <span class="required-mark">*</span></label>
+                                <input type="text" id="nationality" name="nationality" class="form-input" maxlength="64" required>
+                            </div>
+                            
+                            <!-- Religion (text, limit 64) -->
+                            <div>
+                                <label for="religion" class="form-label">Religion</label>
+                                <input type="text" id="religion" name="religion" class="form-input" maxlength="64">
+                            </div>
+                        </div>
+
+                        <!-- Sex/Gender (radio) & Civil Status (select) -->
+                        <div class="grid-layout grid-layout-2-md" style="margin-top: 20px;">
+                            <div class="gender-section">
+                                <label class="form-label">Sex/Gender <span class="required-mark">*</span></label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="male" class="radio-input" required>
+                                        <span>Male</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="female" class="radio-input">
+                                        <span>Female</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Civil Status (select) -->
+                            <div>
+                                <label for="civilStatus" class="form-label">Civil Status <span class="required-mark">*</span></label>
+                                <select id="civilStatus" name="civilStatus" class="form-select" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Section 2: Contact & Emergency -->
+                <div class="form-section">
+                    <fieldset>
+                        <legend><span class="section-title">Contact & Emergency</span></legend>
+                        <div class="grid-layout grid-layout-2-md">
+                            
+                            <!-- Contact Number (number, limit 20 digits) -->
+                            <div>
+                                <label for="contactNumber" class="form-label">Contact Number <span class="required-mark">*</span></label>
+                                <input type="number" id="contactNumber" name="contactNumber" class="form-input" required pattern="[0-9]{1,20}">
+                            </div>
+
+                            <!-- Email Address (email) -->
+                            <div>
+                                <label for="email" class="form-label">Email Address <span class="required-mark">*</span></label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Emergency Contact (number, limit 20 digits) -->
+                        <div class="grid-layout" style="margin-top: 20px;">
+                            <div>
+                                <label for="emergencyContact" class="form-label">Emergency Contact Number (Name, Relationship, Contact) <span class="required-mark">*</span></label>
+                                <input type="number" id="emergencyContact" name="emergencyContact" class="form-input" required pattern="[0-9]{1,20}" placeholder="E.g., 09171234567">
+                            </div>
+                        </div>
+
+                        <!-- Home Address (textarea) -->
+                        <div class="grid-layout" style="margin-top: 20px;">
+                            <div>
+                                <label for="homeAddress" class="form-label">Home Address <span class="required-mark">*</span></label>
+                                <textarea id="homeAddress" name="homeAddress" class="form-textarea" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                
+                <!-- Section 3: Account & Image -->
+                <div class="form-section">
+                    <fieldset>
+                        <legend><span class="section-title">Account Security & Photo</span></legend>
+                        <div class="grid-layout grid-layout-2-md">
+                            
+                            <!-- Username (text, limit 64) -->
+                            <div>
+                                <label for="username" class="form-label">Username <span class="required-mark">*</span></label>
+                                <input type="text" id="username" name="username" class="form-input" maxlength="64" required>
+                            </div>
+
+                            <!-- Photo (Image Input) -->
+                            <div>
+                                <label for="photo" class="form-label">Upload Photo</label>
+                                <input type="file" id="photo" name="photo" accept="image/*" class="file-input">
+                            </div>
+                        </div>
+                        
+                        <div class="grid-layout grid-layout-2-md" style="margin-top: 20px;">
+                            <!-- Password (password, limit 64) -->
+                            <div>
+                                <label for="password" class="form-label">Password <span class="required-mark">*</span></label>
+                                <input type="password" id="password" name="password" class="form-input" maxlength="64" required>
+                            </div>
+
+                            <!-- Confirm Password (password, limit 64) -->
+                            <div>
+                                <label for="confirmPassword" class="form-label">Confirm Password <span class="required-mark">*</span></label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" maxlength="64" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">SUBMIT REGISTRATION</button>
+            </form>
+        </div>
+
+        <!-- Output View (Initially hidden) -->
+        <div id="output-view" class="hidden">
+            <h2 class="output-title">Registration Data Summary</h2>
+            <div id="output-details" class="output-details">
+                <p>Thank you. All non-sensitive data has been captured below.</p>
+                <div id="data-list" class="data-list">
+                    <!-- Dynamic data fields will be inserted here by JavaScript -->
+                </div>
+            </div>
+            <div class="back-btn-container">
+                <button id="back-to-form" class="back-btn">Go Back</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
